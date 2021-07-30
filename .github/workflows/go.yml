@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - name: gitleaks-action
+      uses: zricethezav/gitleaks-action@master
 
     - name: Set up Go
       uses: actions/setup-go@v2
@@ -20,7 +24,3 @@ jobs:
 
     - name: run
       run: go run -v ./...
-      
-    - name: Gitleaks
-      uses: zricethezav/gitleaks-action@v1
-
